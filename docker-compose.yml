@@ -2,18 +2,23 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:15
+    image: postgres:17
     container_name: device-db
     environment:
       POSTGRES_DB: devicesdb
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - device-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   app:
     build:
