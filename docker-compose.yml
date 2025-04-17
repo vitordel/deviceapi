@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: device-db
+    environment:
+      POSTGRES_DB: devicesdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - device-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: device-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - device-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/devicesdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+volumes:
+  postgres-data:
+
+networks:
+  device-network:
