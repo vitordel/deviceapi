@@ -1,15 +1,13 @@
-# Use a Java 21 base image
 FROM eclipse-temurin:21-jdk
 
-# Set work directory
 WORKDIR /app
 
-# Copy built jar file
-COPY target/deviceapi-*.jar app.jar
+# Copie o código-fonte ao invés do JAR
+COPY . .
 
-# Run the jar file
+# Adicione o wait-for-it
 ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /usr/local/bin/wait-for-it.sh
 RUN chmod +x /usr/local/bin/wait-for-it.sh
 
-# Run the wait-for-it script before starting your app
-ENTRYPOINT ["/usr/local/bin/wait-for-it.sh", "db:5432", "--", "java", "-jar", "app.jar"]
+# Comando padrão - espera o banco e inicia o app (usando Maven)
+ENTRYPOINT ["/usr/local/bin/wait-for-it.sh", "db:5432", "--", "sh", "-c", "./mvnw spring-boot:run"]

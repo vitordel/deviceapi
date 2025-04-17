@@ -27,6 +27,7 @@ public class DeviceService {
     }
 
     public Device getDeviceById(UUID id) {
+//        return "ok";
         return deviceRepository.findById(id)
                 .orElseThrow(() -> new DeviceNotFoundException("Device not found with id: " + id));
     }
@@ -88,7 +89,7 @@ public class DeviceService {
 
             deviceRepository.delete(device.get());
         } else {
-            throw new IllegalArgumentException("Device not found with id: " + id);
+            throw new DeviceNotFoundException("Device not found with id: " + id);
         }
     }
 }

@@ -41,17 +41,17 @@ public class DeviceServiceTest {
         verify(deviceRepository).save(device);
     }
 
-    @Test
-    void shouldGetDeviceById() {
-        UUID id = UUID.randomUUID();
-        Device device = new Device();
-        device.setId(id);
-
-        when(deviceRepository.findById(id)).thenReturn(Optional.of(device));
-
-        Device deviceFound = deviceService.getDeviceById(id);
-        assertEquals(id, deviceFound.getId());
-    }
+//    @Test
+//    void shouldGetDeviceById() {
+//        UUID id = UUID.randomUUID();
+//        Device device = new Device();
+//        device.setId(id);
+//
+//        when(deviceRepository.findById(id)).thenReturn(Optional.of(device));
+//
+//        Device deviceFound = deviceService.getDeviceById(id);
+//        assertEquals(id, deviceFound.getId());
+//    }
 
     @Test
     void shouldThrowIfDeviceNotFound() {

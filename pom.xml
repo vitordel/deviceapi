@@ -71,6 +71,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>deviceapi</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
