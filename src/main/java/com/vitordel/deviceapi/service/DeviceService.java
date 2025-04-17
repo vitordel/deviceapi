@@ -5,7 +5,6 @@ import com.vitordel.deviceapi.exception.DeviceNotFoundException;
 import com.vitordel.deviceapi.model.Device;
 import com.vitordel.deviceapi.model.DeviceState;
 import com.vitordel.deviceapi.repository.DeviceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
