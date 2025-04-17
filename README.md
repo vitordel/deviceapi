@@ -68,6 +68,13 @@ You can run this project with Docker using the official OpenJDK image and config
 docker-compose up --build
 ```
 
+## Swagger UI
+
+After running the application, you can access the Swagger UI to explore and test the API:
+
+**Swagger URL:**
+`http://localhost:8080/swagger-ui.html`
+
 ## Database Configuration
 
 The application connects to a PostgreSQL database. Make sure to configure your database settings in the `application.properties` file, typically found in the `src/main/resources` folder.
