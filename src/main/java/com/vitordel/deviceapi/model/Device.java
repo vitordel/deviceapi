@@ -21,7 +21,7 @@ public class Device {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private DeviceState state;
+    private DeviceState state = DeviceState.AVAILABLE;
 
     @Column(name = "created_at", nullable = false ,updatable = false)
     private LocalDateTime creationTime;

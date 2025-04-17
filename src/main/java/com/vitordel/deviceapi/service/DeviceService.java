@@ -43,6 +43,11 @@ public class DeviceService {
     public Device createDevice(Device device) {
         device.setCreationTime(LocalDateTime.now());
         device.setUpdateTime(LocalDateTime.now());
+
+        if (device.getState() == null) {
+            device.setState(DeviceState.AVAILABLE);
+        }
+
         return deviceRepository.save(device);
     }
 
